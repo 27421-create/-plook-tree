@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+    
     body, html {
       margin: 0;
       padding: 0;
@@ -14,72 +16,178 @@
       display: flex;
       flex-direction: column;
     }
+    
     #map {
       flex: 1;
       width: 100%;
     }
-    /* bottom navigation */
+    
+    /* Enhanced bottom navigation - matching community.html */
     .bottom {
       position: fixed;
-      left: 0; right: 0; bottom: 0;
-      display: flex; justify-content: center;
-      padding: 10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding: 12px;
       background: transparent;
       z-index: 1000;
     }
+    
     .bottom > div {
       width: clamp(320px, 92vw, 540px);
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      display: flex; justify-content: space-around; align-items: center;
-      padding: 8px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.15);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     }
+    
     .navbtn {
       background: none;
       border: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
+      gap: 4px;
       cursor: pointer;
       color: #6b7280;
       font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
     }
+    
     .navbtn small {
       font-size: 11px;
+      font-weight: 500;
     }
+    
     .navbtn.active {
-      color: #2f855a;
-      font-weight: 700;
+      color: #16a34a;
+      font-weight: 600;
+      background: rgba(34, 197, 94, 0.1);
+      transform: translateY(-2px);
     }
-    /* popup button */
+    
+    .navbtn.active::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      border-radius: 2px;
+    }
+    
+    .navbtn:hover:not(.active) {
+      color: #374151;
+      background: rgba(0,0,0,0.05);
+      transform: translateY(-1px);
+    }
+    
+    /* Enhanced popup button */
     .btn-claim {
-      background: #38a169;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
       color: white;
-      padding: 4px 8px;
-      border-radius: 6px;
+      padding: 8px 16px;
+      border-radius: 10px;
       font-size: 12px;
       cursor: pointer;
       border: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+      position: relative;
+      overflow: hidden;
     }
+    
+    .btn-claim::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      transform: translate(-50%, -50%);
+    }
+    
+    .btn-claim:active::before {
+      width: 200%;
+      height: 200%;
+    }
+    
     .btn-claim:hover {
-      background: #2f855a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+    }
+
+    /* Custom popup styling */
+    .leaflet-popup-content-wrapper {
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    
+    .leaflet-popup-content {
+      margin: 12px 16px;
+      font-family: "Sarabun", sans-serif;
+    }
+    
+    /* Add ripple effect styles */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+    
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
   </style>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div id="map"></div>
 
-  <!-- bottom navigation -->
-  <div class="bottom">
-    <div>
-      <button class="navbtn" onclick="location.href='dashbroad.html'"><div>🏠</div><small>หน้าหลัก</small></button>
-      <button class="navbtn active" onclick="location.href='map.html'"><div>🗺️</div><small>แผนที่</small></button>
-      <button class="navbtn" onclick="location.href='community.html'"><div>👥</div><small>ชุมชน</small></button>
-      <button class="navbtn" onclick="location.href='profile.html'"><div>👤</div><small>โปรไฟล์</small></button>
-    </div>
+  <!-- Enhanced bottom navigation -->
+<div class="bottom">
+  <div>
+    <button class="navbtn" onclick="location.href='dashbroad.html'">
+      <i class="fa-solid fa-house"></i>
+      <small>หน้าหลัก</small>
+    </button>
+    <button class="navbtn" onclick="location.href='map.html'">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <small>แผนที่</small>
+    </button>
+    <button class="navbtn active" onclick="location.href='community.html'">
+      <i class="fa-solid fa-users"></i>
+      <small>ชุมชน</small>
+    </button>
+    <button class="navbtn" onclick="location.href='profile.html'">
+      <i class="fa-solid fa-user"></i>
+      <small>โปรไฟล์</small>
+    </button>
+  </div>
+</div>
+
   </div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -138,6 +246,63 @@
     } else {
       alert("เบราว์เซอร์นี้ไม่รองรับ GPS");
     }
+
+    // Add click animations for navigation buttons
+    document.querySelectorAll('.navbtn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        // Create ripple effect
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    });
+
+    // Enhanced popup button interactions
+    map.on('popupopen', function() {
+      const claimBtns = document.querySelectorAll('.btn-claim');
+      claimBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          // Create ripple effect
+          const ripple = document.createElement('span');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = x + 'px';
+          ripple.style.top = y + 'px';
+          ripple.classList.add('ripple');
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+
+          // Show success message
+          this.innerHTML = '✅ สำเร็จ!';
+          this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+          
+          setTimeout(() => {
+            map.closePopup();
+          }, 1000);
+        });
+      });
+    });
   </script>
 </body>
 </html>

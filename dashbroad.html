@@ -33,12 +33,12 @@
       
       <div style="display:flex;gap:12px">
         <button id="submitActivityBtn" class="primary-btn" onclick="submitActivity()" disabled style="opacity:0.5;background:#9ca3af">
-          🤖 ส่งให้ AI ประเมิน
+          ส่งให้ AI ประเมิน
         </button>
         <button class="ghost-btn" onclick="closeActivityModal()">ยกเลิก</button>
       </div>
       
-      <p class="hint">💡 AI จะประเมินจากรูปภาพและคำอธิบาย แล้วให้คะแนนที่เหมาะสม</p>
+      <p class="hint">AI จะประเมินจากรูปภาพและคำอธิบาย แล้วให้คะแนนที่เหมาะสม</p>
     </div>
   </div>
 
@@ -763,7 +763,7 @@
 
     // Initialize และแสดงต้นไม้
     function initializeApp() {
-      console.log('🚀 เริ่มต้น Green AR App');
+      console.log('🚀 เริ่มต้น Green up App');
       
       // ทดสอบแสดงต้นไม้ทันที
       setTimeout(() => {
@@ -1408,11 +1408,12 @@
       box-shadow:0 2px 8px rgba(0,0,0,.1);
     }
   </style>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="app">
     <header>
-      <div class="app-title">🌱 Green AR</div>
+      <div class="app-title">🌱 Green up</div>
       <div class="points"><span id="coins">0</span> คะแนน</div>
     </header>
 
@@ -1450,7 +1451,7 @@
 
       <!-- Environmental Activities -->
       <section class="actions">
-        <h3 style="font-size:18px;font-weight:700;color:var(--green-dark);margin-bottom:16px;text-align:center">🌍 กิจกรรมรักษาสิ่งแวดล้อม</h3>
+        <h3 style="font-size:18px;font-weight:700;color:var(--green-dark);margin-bottom:16px;text-align:center">กิจกรรมรักษาสิ่งแวดล้อม</h3>
         
         <!-- Main Categories -->
         <div class="category-grid">
@@ -1481,27 +1482,27 @@
 
         <!-- Plant Care Section -->
         <div style="margin-top:24px;padding:16px;background:linear-gradient(135deg,#f0fff4,#ecfdf5);border-radius:16px;border:1px solid #bbf7d0">
-          <h4 style="font-size:16px;font-weight:700;color:var(--green-dark);margin-bottom:12px;text-align:center">🌿 ดูแลต้นไม้ของคุณ</h4>
+          <h4 style="font-size:16px;font-weight:700;color:var(--green-dark);margin-bottom:12px;text-align:center">ดูแลต้นไม้ของคุณ</h4>
           <div class="plant-care-grid">
             <button class="care-btn" onclick="careForPlant('water')" data-care="water">
-              <div class="care-icon">💧</div>
+              <div class="care-icon"></div>
               <div>รดน้ำ</div>
               <div class="care-effect">+5 คะแนน</div>
             </button>
             
             <button class="care-btn" onclick="careForPlant('fertilizer')" data-care="fertilizer">
-              <div class="care-icon">🪴</div>
+              <div class="care-icon"></div>
               <div>ใส่ปุ๋ย</div>
               <div class="care-effect">+10 คะแนน</div>
             </button>
             
             <button class="care-btn" onclick="careForPlant('sunlight')" data-care="sunlight">
-              <div class="care-icon">☀️</div>
+              <div class="care-icon"></div>
               <div>เดินแสง</div>
               <div class="care-effect">+8 คะแนน</div>
             </button>
           </div>
-          <p style="font-size:12px;color:#059669;text-align:center;margin-top:8px">💡 ดูแลต้นไม้เป็นประจำจะช่วยให้โตเร็วขึ้น</p>
+          <p style="font-size:12px;color:#059669;text-align:center;margin-top:8px">ดูแลต้นไม้เป็นประจำจะช่วยให้โตเร็วขึ้น</p>
         </div>
 
         <div style="margin-top:16px">
@@ -1514,23 +1515,21 @@
 <!-- Bottom nav -->
 <div class="bottom">
   <div>
-    <button class="navbtn active" onclick="location.href='dashbroad.html'">
-      <div>🏠</div>
+    <button class="navbtn" onclick="location.href='dashbroad.html'">
+      <i class="fa-solid fa-house"></i>
       <small>หน้าหลัก</small>
     </button>
-
     <button class="navbtn" onclick="location.href='map.html'">
-      <div>🗺️</div>
+      <i class="fa-solid fa-map-location-dot"></i>
       <small>แผนที่</small>
     </button>
-
-    <button class="navbtn" onclick="location.href='community.html'">
-      <div>👥</div>
+    <button class="navbtn active" onclick="location.href='community.html'">
+      <i class="fa-solid fa-users"></i>
       <small>ชุมชน</small>
     </button>
-
     <button class="navbtn" onclick="location.href='profile.html'">
-      <div>👤</div>
+      <i class="fa-solid fa-user"></i>
       <small>โปรไฟล์</small>
     </button>
   </div>
+</div>
