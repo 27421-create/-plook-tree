@@ -46,15 +46,15 @@
   <div id="roadmapModal" class="modal" aria-hidden="true">
     <div class="modal-card">
       <div class="modal-header">
-        <h3>🗺️ พืชลำดับถัดไป</h3>
+        <h3>พืชลำดับถัดไป</h3>
         <button class="close" onclick="closeRoadmap()">×</button>
       </div>
       <div class="chip-group">
-        <button id="chipTime"   class="chip active" onclick="setRoadmapSort('time')">⏳ เรียงตามเวลาปลูก/ความยาก</button>
+        <button id="chipTime"   class="chip active" onclick="setRoadmapSort('time')">เรียงตามเวลาปลูก/ความยาก</button>
         <button id="chipRarity" class="chip"        onclick="setRoadmapSort('rarity')">⭐ เรียงตามความหายาก</button>
       </div>
       <div id="roadmapList" class="roadmap-list"></div>
-      <p class="hint">💡 "เวลาปลูก" อิงจากคะแนนรวมที่ต้องใช้ (totalNeeded)</p>
+      <p class="hint"> "เวลาปลูก" อิงจากคะแนนรวมที่ต้องใช้ (totalNeeded)</p>
     </div>
   </div>
 
@@ -625,7 +625,7 @@
         
         // คืนค่าปุ่ม
         submitBtn.disabled = false;
-        submitBtn.textContent = '🤖 ส่งให้ AI ประเมิน';
+        submitBtn.textContent = 'ส่งให้ AI ประเมิน';
         submitBtn.style.opacity = '1';
       }
     }
@@ -763,7 +763,7 @@
 
     // Initialize และแสดงต้นไม้
     function initializeApp() {
-      console.log('🚀 เริ่มต้น Green up App');
+      console.log('เริ่มต้น Green up App');
       
       // ทดสอบแสดงต้นไม้ทันที
       setTimeout(() => {
@@ -779,7 +779,7 @@
       
       // ลองอีกครั้งเพื่อให้แน่ใจ
       setTimeout(() => {
-        console.log('🔄 แสดงต้นไม้อีกครั้ง');
+        console.log('แสดงต้นไม้อีกครั้ง');
         const stage = currentStage(percent());
         renderTree(stage);
       }, 1000);
